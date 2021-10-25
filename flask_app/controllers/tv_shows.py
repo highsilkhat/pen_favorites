@@ -9,7 +9,7 @@ from flask_app.controllers import users
 
 
 @app.route('/dashboard')
-def all_tv_shows():
+def all_pens():
     if 'user_id' not in session:
         flash('Please log in')
         return redirect('/')
