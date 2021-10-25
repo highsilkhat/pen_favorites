@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <H1> Welcome {{ session['first_name'] }}, to Fountain Pen Fanatics Central</H1>
+    <h2>Community Pens</h2>
+
+    <button onclick="window.location.href='/logout'">Logout</button>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Manufacturer</th>
+                <th>Model</th>
+                <th>Nib Size</th>
+                <th>Nib Type</th>
+                <th>Color</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pen in likes %}
+            <tr>
+                <td> {{ pen.manufacturer }}</td>
+                <td> {{ pen.model }}</td>
+                <td> {{ pen.nib_size }}</td>
+                <td> {{ pen.nib_type }}</td>
+                <td> {{ pen.color }}</td>
+                <td> ${{ pen.price }}</td>
+                <td>
+
+                    <a href="/pen/{{ pen.id}}">Pen Details</a>
+
+                    {% if pen.user_id == session['user_id'] %}
+
+                    | <a href="/edit/{{ pen.id }}">edit</a>
+
+                    | <a href="/delete/{{ pen.id }}">delete</a>
+
+                    {% endif %}
+
+                    {% if pen.user_id != session['user_id'] %}
+
+                    | <a href="/unlike/{{ pen.id }}">unlike</a>
+                    {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+            {% for pen in unlikes %}
+            <tr>
+                <td> {{ pen.manufacturer }}</td>
+                <td> {{ pen.model }}</td>
+                <td> {{ pen.nib_size }}</td>
+                <td> {{ pen.nib_type }}</td>
+                <td> {{ pen.color }}</td>
+                <td> ${{ pen.price }}</td>
+                <td>
+
+                    <a href="/pen/{{ pen.id}}">Pen Details</a>
+
+                    {% if pen.user_id == session['user_id'] %}
+
+                    | <a href="/edit/{{ pen.id }}">edit</a>
+
+                    | <a href="/delete/{{ pen.id }}">delete</a>
+
+                    {% endif %}
+
+                    {% if pen.user_id != session['user_id'] %}
+
+                    | <a href="/like/{{ pen.id }}">like</a>
+                    {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+    <button onclick="window.location.href='/new'">Add a New Pen</button>
+
+</body>
+
+</html>

@@ -2,7 +2,7 @@ from flask_app.config.mysqlconnection import MySQLConnection, connectToMySQL
 from flask import flash
 import re
 
-from flask_app.models import tv_show
+from flask_app.models import pen
 
 EMAIL_REGEX = re.compile (r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
@@ -22,7 +22,7 @@ class User:
 
         query = 'INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);'
 
-        new_user_id = connectToMySQL('tv_shows_schema').query_db(query, data)
+        new_user_id = connectToMySQL('pens_schema').query_db(query, data)
 
         return new_user_id
 
@@ -31,7 +31,7 @@ class User:
 
         query = 'SELECT * FROM users WHERE email = %(email)s;'
 
-        results = connectToMySQL('tv_shows_schema').query_db(query, data)
+        results = connectToMySQL('pens_schema').query_db(query, data)
 
         users = []
 
