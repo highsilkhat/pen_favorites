@@ -6,20 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add a Fountain Pen</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-    <header>
+    <div class="header">
 
 
         <h1>
             Add a New Fountain Pen
         </h1>
 
-        <button onclick="window.location.href='/dashboard'">Community Pens</button>
-        <button onclick="window.location.href='/logout'">Logout</button>
+        <div class="dashboard-header">
+            <button onclick="window.location.href='/dashboard'" class="btn btn-primary">Community Pens</button>
+            <button onclick="window.location.href='/logout'" class="btn btn-secondary">Logout</button>
+        </div>
 
-    </header>
+    </div>
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -29,41 +33,55 @@
     {% endif %}
     {% endwith %}
 
-    <div class="main">
+    <div class="new-pen-form">
         <form action="/pens/post" method='POST'>
 
-            <label for="manufacturer">Manufacturer:</label>
-            <input type="text" name="manufacturer">
+            <label for="manufacturer" class="form-label">
+                Manufacturer
+            </label>
+            <input type="text" name="manufacturer" class="form-control">
 
-            <label for="model">Model:</label>
-            <input type="text" name="model">
+            <label for="model" class="form-label">
+                Model
+            </label>
+            <input type="text" name="model" class="form-control">
 
-            <label for="nib_size">Nib Size:</label>
-            <select name="nib_size">
-                <option value= "Extra Fine"> EF </option>
-                <option value= "Fine"> F </option>
-                <option value= "Medium"> M </option>
-                <option value= "Broad"> B </option>
-                <option value= "Stub"> Stub </option>
-                <option value= "Flex"> Flex</option>
+            <label for="nib_size" class="form-label">
+                Nib Size:
+            </label>
+            <select name="nib_size" class="form-control">
+                <option value="Extra Fine"> EF </option>
+                <option value="Fine"> F </option>
+                <option value="Medium"> M </option>
+                <option value="Broad"> B </option>
+                <option value="Stub"> Stub </option>
+                <option value="Flex"> Flex</option>
             </select>
 
-            <label for="nib_type">Nib Type</label>
-            <select name="nib_type">
+            <label for="nib_type" class="form-label">
+                Nib Type
+            </label>
+            <select name="nib_type" class="form-control">
                 <option value="European"> European</option>
-                <option value= "Japanese"> Japanese</option>
+                <option value="Japanese"> Japanese</option>
             </select>
 
-            <label for="color">Color</label>
-            <input type="text" name="color">
+            <label for="color" class="form-label">
+                Color
+            </label>
+            <input type="text" name="color" class="form-control">
 
-            <label for="price"> Price</label>
-            <input type="number" name="price">
+            <label for="price" class="form-label">
+                Price
+            </label>
+            <input type="number" name="price" class="form-control">
 
-            <label for="description">Description:</label>
-            <textarea name="description" cols="30" rows="10"></textarea>
+            <label for="description" class="form-label">
+                Description
+            </label>
+            <textarea name="description" cols="30" rows="10" class="form-control"></textarea>
 
-            <button type="submit">Add</button>
+            <button type="submit" class="btn btn-primary">Add</button>
 
 
         </form>

@@ -1,0 +1,24 @@
+.login-page {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header {
+    margin: 0% auto;
+    width: 70%;
+}
+
+.dashboard-header {
+    margin: 0% auto;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: aqua;
+    width: 200px;
+    border: 5px black solid; */
+}
+
+.new-pen-form {
+    margin: 0%auto;
+    width: 66%;
+}
