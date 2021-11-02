@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <title>{{ pen.manufacturer }} -- {{ pen.model }}</title>
+    
+</head>
+
+<body>
+    <div class="dashboard-header">
+        <button onclick="window.location.href='/dashboard'">Community Pens</button>
+        <button onclick="window.location.href='/logout'">Logout</button>
+
+    </div>
+
+    <div class="dashboard-header">
+        <h1>{{ pen.manufacturer }} {{ pen.model }}</h1>
+        <h2>Liked by {{ num_of_favorites }} pen fanatics</h2>
+
+        <p>Nib Size: {{ pen.nib_size }}</p>
+
+        <p>Nib Type: {{ pen.nib_type }}</p>
+
+        <p>Color: {{ pen.color }}</p>
+
+        <p>Price: {{ pen.price }}</p>
+
+        <p>Description: {{pen.description }}
+        </p>
+
+        <p>Posted By: {{ pen.favorite.first_name}} {{ pen.favorite.last_name}}</p>
+
+    </div>
+
+</body>
+
+</html>

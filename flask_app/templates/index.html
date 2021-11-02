@@ -5,11 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Registration</title>
+    <title>Welcome to Pen Fanatics!</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-    <p>Register</p>
+    <div class="header">
+        <h1> Pen Fanatics </h1>
+        <p>Register for Pen Fanatics</p>
+    </div>
 
 
     {% with messages = get_flashed_messages() %}
@@ -20,73 +25,79 @@
     {% endif %}
     {% endwith %}
 
-
-    <form action="/users/create" method='POST'>
-
-        <p>
-            <label for="first_name">
-                First Name
-            </label>
-            <input type="text" name="first_name">
-        </p>
-
-        <p>
-            <label for="last_name">
-                Last Name
-            </label>
-            <input type="text" name="last_name">
-        </p>
-
-        <p>
-            <label for="email">
-                Email
-            </label>
-            <input type="text" name="email">
-        </p>
-
-        <p>
-            <label for="newPassword">
-                Password
-            </label>
-            <input type="password" name="newPassword">
-        </p>
-
-        <p>
-            <label for="confirmPassword">
-                Confirm Password
-            </label>
-            <input type="password" name="confirmPassword">
-        </p>
-
-        <p>
-            <button type="submit">
-                Register
-            </button>
-        </p>
+    <div class="login-page">
+        <div class="register-form">
 
 
-    </form>
+            <form action="/users/create" method='POST'>
 
-    <p>Login</p>
-    <form action="/users/login" method= 'POST'>
-        <p>
-            <label for="username">
-                Email
-            </label>
-            <input type="text" name ="username">
+                <p>
+                    <label for="first_name" class="form-label">
+                        First Name
+                    </label>
+                    <input type="text" name="first_name" class="form-control">
+                </p>
 
-            <label for="password">
-                Password
-            </label>
-            <input type="password" name = "password">
+                <p>
+                    <label for="last_name" class="form-label">
+                        Last Name
+                    </label>
+                    <input type="text" name="last_name" class="form-control">
+                </p>
 
-            <button type="submit">
-                Login
-            </button>
+                <p>
+                    <label for="email" class="form-label">
+                        Email
+                    </label>
+                    <input type="text" name="email" class="form-control">
+                </p>
 
-            
-        </p>
-    </form>
+                <p>
+                    <label for="newPassword" class="form-label">
+                        Password
+                    </label>
+                    <input type="password" name="newPassword" class="form-control">
+                </p>
+
+                <p>
+                    <label for="confirmPassword" class="form-label">
+                        Confirm Password
+                    </label>
+                    <input type="password" name="confirmPassword" class="form-control">
+                </p>
+
+                <p>
+                    <button type="submit" class="btn btn-primary">
+                        Register
+                    </button>
+                </p>
+            </form>
+
+        </div>
+
+        <div class="login-form">
+            <p>Login</p>
+            <form action="/users/login" method='POST'>
+                <p>
+                    <label for="username" class="form-label">
+                        Email
+                    </label>
+                    <input type="text" name="username" class="form-control">
+
+                    <label for="password" class="form-label">
+                        Password
+                    </label>
+                    <input type="password" name="password" class="form-control">
+
+                    <button type="submit" class="btn btn-primary">
+                        Login
+                    </button>
+
+
+                </p>
+            </form>
+        </div>
+    </div>
 
 </body>
 

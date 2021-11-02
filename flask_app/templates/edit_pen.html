@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit {{pen.manufacturer}} {{pen.model}}</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="header">
+
+
+        <h1>
+            Edit Your {{pen.manufacturer}} {{pen.model}}
+        </h1>
+
+        <div class="dashboard-header">
+            <button onclick="window.location.href='/dashboard'" class="btn btn-primary">Community Pens</button>
+            <button onclick="window.location.href='/logout'" class="btn btn-secondary">Logout</button>
+        </div>
+
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="main">
+        <form action="/edit/{{ pen.id }}/post" method='POST'>
+
+            <label for="manufacturer">
+                Manufacturer
+            </label class="form-label">
+            <input type="text" class="form-control" name="manufacturer" value="{{ pen.manufacturer }}">
+
+            <label for="model" class="form-label">
+                Model
+            </label>
+            <input type="text" name="model" class="form-control" value="{{ pen.model }}">
+
+            <label for="nib_size" class="form-label">
+                Nib Size
+            </label>
+            <select name="nib_size" class="form-control">
+                <option value="Extra Fine" {% if pen.nib_size=="Extra Fine" %} selected="selected" {% endif %}> EF
+                </option>
+                <option value="Fine" {% if pen.nib_size=="Fine" %} selected="selected" {% endif %}> F </option>
+                <option value="Medium" {% if pen.nib_size=="Medium" %} selected="selected" {% endif %}> M </option>
+                <option value="Broad" {% if pen.nib_size=="Broad" %} selected="selected" {% endif %}> B </option>
+                <option value="Stub" {% if pen.nib_size=="Stub" %} selected="selected" {% endif %}> Stub </option>
+                <option value="Flex" {% if pen.nib_size=="Flex" %} selected="selected" {% endif %}> Flex</option>
+            </select>
+
+            <label for="nib_type" class="form-label">
+                Nib Type
+            </label>
+            <select name="nib_type" class="form-control">
+                <option value="European" {% if pen.nib_type=="European" %} selected="selected" {% endif %}> European
+                </option>
+                <option value="Japanese" {% if pen.nib_type=="Japanese" %} selected="selected" {% endif %}> Japanese
+                </option>
+            </select>
+
+            <label for="color" class="form-label">
+                Color
+            </label>
+            <input type="text" name="color" class="form-control" value="{{ pen.color }}">
+
+            <label for="price" class="form-label">
+                Price
+            </label>
+            <input type="number" name="price" class="form-control" value="{{ pen.price }}">
+
+            <label for="description" class="form-label">
+                Description
+            </label>
+            <textarea name="description" class="form-control" cols="30" rows="10">{{ pen.description }}</textarea>
+
+            <button type="submit">Update</button>
+
+
+        </form>
+    </div>
+</body>
+
+</html>
